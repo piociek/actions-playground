@@ -1,0 +1,10 @@
+name: Publish new issue details
+on:
+  issues:
+    types: opened
+jobs:
+  publish-details:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish details
+        run: echo ${{ toJSON(github.event.issue) }}
