@@ -17,6 +17,9 @@ jobs:
       - name: Setup gradle
         uses: gradle/actions/setup-gradle@v5
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Build with Gradle
         run: ./gradlew build -x test
 
