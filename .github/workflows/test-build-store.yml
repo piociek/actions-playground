@@ -30,7 +30,7 @@ jobs:
 
       - name: Publish jar name
         id: publish
-        run: find build/libs/*.jar ! -name '*plain*' -type f -execdir echo'jar-name={}' >> $GITHUB_OUTPUT ';'
+        run: find build/libs/*jar ! -name '*plain*' -type f -execdir echo 'jar-name={}' >> $GITHUB_OUTPUT ';'
 
       - name: Upload artifact
         uses: actions/upload-artifact@v6
