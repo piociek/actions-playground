@@ -4,7 +4,7 @@ jobs:
   test-and-build:
     runs-on: ubuntu-latest
     outputs:
-      jar-name: $ {{ steps.publish.outputs.jar-name }}
+      jar-name: ${{ steps.publish.outputs.jar-name }}
     steps:
       - name: Get code
         uses: actions/checkout@v6
