@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - 'main'
-    branches-ignore:
-      - 'dev-*'
 jobs:
   test:
     runs-on: ubuntu-latest
