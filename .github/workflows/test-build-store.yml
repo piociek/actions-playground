@@ -3,6 +3,8 @@ on: workflow_dispatch
 jobs:
   test-and-build:
     runs-on: ubuntu-latest
+    outputs:
+      jar-name: $ {{ steps.publish.outputs.jar-name }}
     steps:
       - name: Get code
         uses: actions/checkout@v6
@@ -26,6 +28,10 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
+      - name: Publish jar name
+        id: publish
+        run: find build/libs/*.jar ! -name '*plain*' -type f -execdir echo'jar-name={}' >> $GITHUB_OUTPUT ';'
+
       - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
@@ -42,6 +48,9 @@ jobs:
 
       - name: Output contents
         run: ls -la
+
+      - name: Output filename shared in previous job
+        run: echo "${{ needs.test-and-build.outputs.jar-name }}"
 
       - name: Print greeting
         run: echo "Deploy job"
