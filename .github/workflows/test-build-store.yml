@@ -20,7 +20,7 @@ jobs:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: deps-${{ hashFiles(build.gradle) }}
+          key: deps-${{ hashFiles('build.gradle') }}
 
       - name: Setup gradle
         uses: gradle/actions/setup-gradle@v5
