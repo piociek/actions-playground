@@ -1,5 +1,10 @@
 name: Run tests on push
-on: [push, workflow_dispatch]
+on:
+  push:
+    branches:
+      - 'main'
+    branches-ignore:
+      - 'dev-*'
 jobs:
   test:
     runs-on: ubuntu-latest
