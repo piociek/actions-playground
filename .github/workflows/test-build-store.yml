@@ -46,6 +46,14 @@ jobs:
           distribution: 'temurin'
           architecture: x64
 
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: deps-${{ hashFiles('build.gradle') }}
+
       - name: Setup gradle
         uses: gradle/actions/setup-gradle@v5
 
