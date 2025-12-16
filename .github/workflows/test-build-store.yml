@@ -35,5 +35,13 @@ jobs:
     needs: test-and-build
     runs-on: ubuntu-latest
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: build-jars
+
+      - name: Output contents
+        run: ls -la
+
       - name: Print greeting
         run: echo "Deploy job"
