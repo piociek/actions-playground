@@ -1,9 +1,11 @@
 name: Environment variable workflow
 on: workflow_dispatch #manual trigger
+
 env:
   ENV_NAME: ${{ secrets.SECRET_KEY }}
 jobs:
   test:
+    environment: qa
     runs-on: ubuntu-latest
     steps:
       - name: Get code
