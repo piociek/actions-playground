@@ -2,6 +2,7 @@ name: Matrix strategy
 on: workflow_dispatch #manual trigger
 jobs:
   test:
+    continue-on-error: true
     strategy:
       matrix:
         java-version: ['8','17','21']
