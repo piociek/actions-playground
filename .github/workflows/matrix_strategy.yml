@@ -10,6 +10,9 @@ jobs:
         include:
           - java-version: 22
             os: 'ubuntu-latest'
+        exclude:
+          - java-version: 8
+            os: 'windows-latest'
     environment: qa
     runs-on: ${{ matrix.os }}
     steps:

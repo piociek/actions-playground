@@ -1,0 +1,8 @@
+name: reusable.yml
+on: workflow_call
+jobs:
+  print:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simple print
+        run: echo "Reused workflow"

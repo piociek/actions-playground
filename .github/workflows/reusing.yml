@@ -1,0 +1,11 @@
+name: reusing.yml
+on: workflow_dispatch
+jobs:
+  execute-self:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print
+        run: echo "Executed self"
+  reuse:
+    needs: execute-self
+    uses: ./.github/workflows/reusable.yml
