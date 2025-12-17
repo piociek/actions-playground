@@ -1,7 +1,7 @@
 name: Environment variable workflow
 on: workflow_dispatch #manual trigger
 env:
-  ENV_NAME: ENV_VALUE
+  ENV_NAME: ${{ secrets.SECRET_KEY }}
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -25,5 +25,5 @@ jobs:
       - name: Run tests
         run: ./gradlew test
 
-      - name: Print env var
+      - name: Print env var (should fails since it's secret)
         run: echo "ENV_NAME = ${{ env.ENV_NAME }}"
