@@ -1,8 +1,15 @@
 name: Workflow that can be reused
-on: workflow_call
+on:
+  workflow_call:
+    inputs:
+      simple-value:
+        description: Just a dummy example
+        required: true
+        default: 'Default value'
+        type: string
 jobs:
   print:
     runs-on: ubuntu-latest
     steps:
       - name: Simple print
-        run: echo "Reused workflow"
+        run: echo "${{ inputs.simple-value }}"

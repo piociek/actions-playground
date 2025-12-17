@@ -9,3 +9,5 @@ jobs:
   reuse:
     needs: execute-self
     uses: ./.github/workflows/reusable.yml
+    with:
+      simple-value: 'Value set explicitly'
