@@ -9,8 +9,8 @@ jobs:
   reuse:
     needs: execute-self
     uses: ./.github/workflows/reusable.yml
-    secrets:
-      some-secret: ${{ secrets.some-secrets }}
+#    secrets:
+#      some-secret: ${{ secrets.some-secrets }}
     with:
       simple-value: 'Value set explicitly'
   print-resuse-result:

@@ -1,9 +1,9 @@
 name: Workflow that can be reused
 on:
   workflow_call:
-    secrets:
-      some-secret:
-        required: true
+#    secrets:
+#      some-secret:
+#        required: true
     inputs:
       simple-value:
         description: Just a dummy example
