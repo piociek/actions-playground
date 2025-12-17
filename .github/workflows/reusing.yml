@@ -9,5 +9,13 @@ jobs:
   reuse:
     needs: execute-self
     uses: ./.github/workflows/reusable.yml
+    secrets:
+      some-secret: ${{ secrets.some-secrets }}
     with:
       simple-value: 'Value set explicitly'
+  print-resuse-result:
+    needs: reuse
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print result
+        run: echo "${{ needs.reuse.outputs.workflow-outcome }}"

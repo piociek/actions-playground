@@ -1,15 +1,28 @@
 name: Workflow that can be reused
 on:
   workflow_call:
+    secrets:
+      some-secret:
+        required: true
     inputs:
       simple-value:
         description: Just a dummy example
         required: true
         default: 'Default value'
         type: string
+    outputs:
+      workflow-outcome:
+        description: Output of this workflow
+        value: ${{ jobs.print.outputs.job-outcome }}
 jobs:
   print:
+    outputs:
+      job-outcome: ${{ steps.step-result.outputs.step-result }}
     runs-on: ubuntu-latest
     steps:
       - name: Simple print
         run: echo "${{ inputs.simple-value }}"
+
+      - name: Set output
+        id: step-result
+        run: echo "step-result=success" >> $GITHUB_OUTPUT
