@@ -1,4 +1,4 @@
-name: reusing.yml
+name: Workflow that reuses other workflow
 on: workflow_dispatch
 jobs:
   execute-self:

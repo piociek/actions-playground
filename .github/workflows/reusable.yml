@@ -1,4 +1,4 @@
-name: reusable.yml
+name: Workflow that can be reused
 on: workflow_call
 jobs:
   print:
