@@ -5,8 +5,11 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        java-version: ['8','17','21']
+        java-version: ['8','21']
         os: ['ubuntu-latest', 'windows-latest']
+        include:
+          - java-version: 22
+            os: 'ubuntu-latest'
     environment: qa
     runs-on: ${{ matrix.os }}
     steps:
