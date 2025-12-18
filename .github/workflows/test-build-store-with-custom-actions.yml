@@ -18,6 +18,9 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
+      - name: Get code
+        uses: actions/checkout@v6
+
       - name: Run docker action
         id: docker-step
         uses: ./.github/actions/docker-action
