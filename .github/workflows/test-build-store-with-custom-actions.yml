@@ -1,0 +1,55 @@
+name: Test Build and Store (Custom Actions)
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v6
+
+      - name: Setup java, gradle and cache deps
+        uses: ./.github/actions/java-gradle-cache-deps
+
+      - name: Run tests
+        run: ./gradlew test
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+    outputs:
+      jar-name: ${{ steps.publish.outputs.jar-name }}
+    steps:
+      - name: Get code
+        uses: actions/checkout@v6
+
+      - name: Setup java, gradle and cache deps
+        uses: ./.github/actions/java-gradle-cache-deps
+
+      - name: Build with Gradle
+        run: ./gradlew build
+
+      - name: Publish jar name
+        id: publish
+        run: find build/libs/*jar ! -name '*plain*' -type f -execdir echo 'jar-name={}' >> $GITHUB_OUTPUT ';'
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: build-jars
+          path: build/libs/
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: build-jars
+
+      - name: Output contents
+        run: ls -la
+
+      - name: Output filename shared in previous job
+        run: echo "${{ needs.build.outputs.jar-name }}"
+
+      - name: Print greeting
+        run: echo "Deploy job"
