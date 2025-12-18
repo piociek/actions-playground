@@ -15,6 +15,11 @@ jobs:
 
       - name: Print output
         run: echo 'JS output ${{ steps.custom-js.outputs.simple-output }}'
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run docker action
+        uses: ./.github/actions/docker-action
   test:
     runs-on: ubuntu-latest
     steps:
