@@ -9,6 +9,8 @@ jobs:
 
       - name: Setup java, gradle and cache deps
         uses: ./.github/actions/java-gradle-cache-deps
+        with:
+          java-version: 21
 
       - name: Run tests
         run: ./gradlew test
@@ -23,6 +25,8 @@ jobs:
 
       - name: Setup java, gradle and cache deps
         uses: ./.github/actions/java-gradle-cache-deps
+        with:
+          java-version: 22
 
       - name: Build with Gradle
         run: ./gradlew build
