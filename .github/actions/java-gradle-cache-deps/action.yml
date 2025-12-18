@@ -5,6 +5,10 @@ inputs:
     description: Java version
     required: true
     default: '21'
+outputs:
+  some-value:
+    description: Some value for learning purposes
+    value: ${{ steps.output-step.outputs.value }}
 runs:
   using: composite
   steps:
@@ -33,3 +37,8 @@ runs:
       id: make-gradle-executable
       shell: bash
       run: chmod +x ./gradlew
+
+    - name: Output step
+      id: output-step
+      shell: bash
+      run: echo "value='DUMMY_VALUE'" >> $GITHUB_OUTPUT

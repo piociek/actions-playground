@@ -8,9 +8,13 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Setup java, gradle and cache deps
+        id: custom-step
         uses: ./.github/actions/java-gradle-cache-deps
         with:
           java-version: 21
+
+      - name: Output value from custom step
+        run: echo 'Value from custom action ${{ steps.custom-step.outputs.some-value }}''
 
       - name: Run tests
         run: ./gradlew test
