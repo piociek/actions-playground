@@ -1,5 +1,10 @@
 name: Java script action example
 description: Description
+inputs:
+  simple-input:
+    required: false
+    description: Input desc
+    default: 'Def value input'
 runs:
   using: node20
   main: main.js
