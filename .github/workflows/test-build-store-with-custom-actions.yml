@@ -19,7 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run docker action
+        id: docker-step
         uses: ./.github/actions/docker-action
+        with:
+          simple-input: 'Some new val'
+
+      - name: Print output
+        run: echo 'Docker output ${{ steps.docker-step.outputs.simple-output }}'
   test:
     runs-on: ubuntu-latest
     steps:
