@@ -14,7 +14,7 @@ jobs:
           java-version: 21
 
       - name: Output value from custom step
-        run: echo 'Value from custom action ${{ steps.custom-step.outputs.some-value }}''
+        run: echo 'Value from custom action ${{ steps.custom-step.outputs.some-value }}'
 
       - name: Run tests
         run: ./gradlew test
