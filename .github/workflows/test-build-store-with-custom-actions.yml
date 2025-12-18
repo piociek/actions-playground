@@ -10,6 +10,8 @@ jobs:
       - name: Custom JS action
         id: custom-js
         uses: ./.github/actions/js-action
+        with:
+          simple-input: 'Some new val'
 
       - name: Print output
         run: echo 'JS output ${{ steps.custom-js.outputs.simple-output }}'
