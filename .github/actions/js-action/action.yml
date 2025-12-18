@@ -5,6 +5,9 @@ inputs:
     required: false
     description: Input desc
     default: 'Def value input'
+outputs:
+  simple-output:
+    description: Output desc
 runs:
   using: node20
   main: main.js

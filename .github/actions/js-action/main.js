@@ -8,6 +8,8 @@ function run() {
     exec.exec(`echo " Just an example execution of echo with val ${inputVal} "`)
 
     core.notice('Just a test from JS action. Input {}' + inputVal);
+
+    core.setOutput('simple-output', 'Simple output value')
 }
 
 run();
