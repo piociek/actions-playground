@@ -1,0 +1,5 @@
+name: Java script action example
+description: Description
+runs:
+  using: node20
+  main: main.js
